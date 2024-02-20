@@ -2,7 +2,9 @@ import { CalendarIcon } from '@heroicons/react/24/outline';
 import { generateYAxis } from '@/app/lib/utils';
 import { lusitana } from '@/app/ui/fonts';
 import { Revenue } from '@/app/lib/definitions';
+import { any } from 'zod';
 import { fetchRevenue } from '@/app/lib/data';
+import dropDown from './dropDown';
 
 
 // This component is representational only.
@@ -11,10 +13,32 @@ import { fetchRevenue } from '@/app/lib/data';
 // https://www.chartjs.org/
 // https://airbnb.io/visx/
 
+
+
 export default async function RevenueChart() { // Make component async, remove the props
-  const revenue = await fetchRevenue()
+  const monthsArray=[
+    'Jan', 'Feb', 'Mar', 'Apr', 'May','Jun', 'Jul', 'Ago', 'Sept', 'Oct', 'Nov', 'Dec'
+  ];
+
+  const revenue = await fetchRevenue('2023');
+  //  const revenue = [
+  //   { month: 'Jan', revenue: 2000 },
+  //   { month: 'Feb', revenue: 1800 },
+  //   { month: 'Mar', revenue: 2200 },
+  //   { month: 'Apr', revenue: 2500 },
+  //   { month: 'May', revenue: 2300 },
+  //   { month: 'Jun', revenue: 3200 },
+  //   { month: 'Jul', revenue: 3500 },
+  //   { month: 'Aug', revenue: 3700 },
+  //   { month: 'Sep', revenue: 2500 },
+  //   { month: 'Oct', revenue: 2800 },
+  //   { month: 'Nov', revenue: 3000 },
+  //   { month: 'Dec', revenue: 4800 },
+  // ];
   const chartHeight = 350;
   // NOTE: comment in this code when you get to this point in the course
+ 
+  
 
   const { yAxisLabels, topLabel } = generateYAxis(revenue);
 
@@ -40,23 +64,24 @@ export default async function RevenueChart() { // Make component async, remove t
             ))}
           </div>
 
-          {revenue.map((month) => (
-            <div key={month.month} className="flex flex-col items-center gap-2">
+          {revenue.map((item) => (
+            <div key={item.month} className="flex flex-col items-center gap-2">
               <div
                 className="w-full rounded-md bg-blue-300"
                 style={{
-                  height: `${(chartHeight / topLabel) * month.revenue}px`,
+                  height: `${(chartHeight / topLabel) * item.revenue}px`,
                 }}
               ></div>
               <p className="-rotate-90 text-sm text-gray-400 sm:rotate-0">
-                {month.month}
+                {monthsArray[item.month-1]}
               </p>
             </div>
           ))}
         </div>
         <div className="flex items-center pb-2 pt-6">
           <CalendarIcon className="h-5 w-5 text-gray-500" />
-          <h3 className="ml-2 text-sm text-gray-500 ">Last 12 months</h3>
+          <h3 className="ml-2 text-sm text-gray-500 ">2023</h3>
+          
         </div>
       </div> 
     </div>
