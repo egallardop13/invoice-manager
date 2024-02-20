@@ -12,20 +12,34 @@ import { formatCurrency } from './utils';
 import { unstable_noStore as noStore } from 'next/cache';
 
 
-export async function fetchRevenue() {
+export async function fetchRevenue(year: string) {
   noStore();
   // This is equivalent to in fetch(..., {cache: 'no-store'}).
-
+  
   try {
     // Artificially delay a response for demo purposes.
     // Don't do this in production :)
-
+    
+     // Replace with the year you want to query
     console.log('Fetching revenue data...');
-     await new Promise((resolve) => setTimeout(resolve, 3000));
+await new Promise((resolve) => setTimeout(resolve, 3000));
 
-    const data = await sql<Revenue>`SELECT * FROM revenue`;
 
-    console.log('Data fetch completed after 3 seconds.');
+const data = await sql<Revenue>`SELECT
+    EXTRACT(MONTH FROM date) AS month,
+    SUM(amount) AS revenue
+FROM
+    invoices
+WHERE
+    status = 'paid'
+    AND EXTRACT(YEAR FROM date) = ${year}
+GROUP BY
+    EXTRACT(MONTH FROM date)
+ORDER BY
+    month`;
+
+console.log('Data fetch completed after 3 seconds.');
+
 
     return data.rows;
   } catch (error) {
