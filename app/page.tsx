@@ -52,7 +52,7 @@ export default function Page() {
           <div className="mt-10 flex items-center gap-x-6">
             <Link
               href="/login"
-              className="flex h-10 items-center rounded-lg bg-teal-700 px-4 text-sm font-medium text-black transition-colors hover:bg-teal-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-800 active:bg-teal-900 aria-disabled:cursor-not-allowed aria-disabled:opacity-50"
+              className="flex h-10 items-center rounded-lg bg-teal-700 px-4 text-sm font-medium text-white transition-colors hover:bg-teal-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-800 active:bg-teal-900 aria-disabled:cursor-not-allowed aria-disabled:opacity-50"
             >
               Get Started
             </Link>

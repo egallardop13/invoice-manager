@@ -16,7 +16,7 @@ export default function SideNav() {
       >
         <div className="  flex flex-wrap  items-center justify-center text-white w-full h-full ">
           <RocketLaunchIcon className=" h-10 w-10  md:h-20 md:w-40 text-black " />
-          <label className='text-black text-2xl ' >InvoiceManager</label>
+          <label className='text-gray-900 font-semibold text-2xl ' >Invoice<strong className='text-black font-bold'>Manager</strong></label>
         </div>
       </Link>
       <div className="flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2">
