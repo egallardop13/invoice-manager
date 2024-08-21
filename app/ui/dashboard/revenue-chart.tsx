@@ -17,7 +17,7 @@ import dropDown from './dropDown';
 
 export default async function RevenueChart() { // Make component async, remove the props
   const monthsArray=[
-    'Jan', 'Feb', 'Mar', 'Apr', 'May','Jun', 'Jul', 'Ago', 'Sept', 'Oct', 'Nov', 'Dec'
+    'Jan', 'Feb', 'Mar', 'Apr', 'May','Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'
   ];
 
   const revenue = await fetchRevenue('2023');
@@ -67,7 +67,7 @@ export default async function RevenueChart() { // Make component async, remove t
           {revenue.map((item) => (
             <div key={item.month} className="flex flex-col items-center gap-2">
               <div
-                className="w-full rounded-md bg-blue-300"
+                className="w-full rounded-md bg-teal-400"
                 style={{
                   height: `${(chartHeight / topLabel) * item.revenue}px`,
                 }}
