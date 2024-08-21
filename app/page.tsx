@@ -7,7 +7,9 @@ import HeroImage from '@/public/HeroImage.png';
 import { RocketLaunchIcon } from '@heroicons/react/16/solid';
 
 export const metadata: Metadata = {
-  title: 'PayStat',
+  title: 'InvoiceManager',
+  description:
+    'Showcase project with react, nextjs, typescript, tailwindcss, and postgressSQL',
 };
 
 export default function Page() {
