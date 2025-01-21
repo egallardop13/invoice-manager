@@ -36,13 +36,10 @@ export default function EditInvoiceForm({
     e.preventDefault();
     const formData = new FormData(e.currentTarget as HTMLFormElement);
     const data = {
-      // customerId: String(formData.get('customerId')),
       amount: Number(formData.get('amount')),
-      // status: String(formData.get('status')),
     };
 
     // Validate using Zod
-    // const result = invoiceSchema.parse(data);
     try {
       invoiceSchema.parse(data);
       console.log('Form submitted:', formData);
@@ -53,19 +50,6 @@ export default function EditInvoiceForm({
         console.error('Error:', error.issues[0].message);
       }
     }
-    // if (!result.success) {
-    //   // Handle validation errors
-    //   dispatch({
-    //     // type: 'FORM_ERROR',
-    //     // errors: result.error.format(),
-    //   });
-    //   return;
-    // }
-
-    // If valid, proceed with your form submission logic
-    // dispatch(data);
-    // console.log('Form submitted:', formData);
-    // dispatch(formData);
   };
 
   return (
